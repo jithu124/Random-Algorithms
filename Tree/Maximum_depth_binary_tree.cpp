@@ -38,6 +38,15 @@ int max_depth(Node * root)
     }
     
 }
+int height(Node * root)
+{
+    if(root==NULL)
+        {return 0;}
+    else
+    {
+        return 1+max(height(root->left),height(root->right));
+    }
+}
 
 int depth_using_queue(Node * root)
 {
@@ -81,7 +90,7 @@ int main()
     // Tree made
     Node* root = newNode(1);
     root->left = newNode(2);
-    root->right = newNode(2);
+    root->right = newNode(8);
     root->left->left = newNode(3);
     root->left->right = newNode(4);
     root->right->left = newNode(4);
@@ -93,5 +102,7 @@ int main()
  
     cout<<"The maximum depth is "<< max_depth(root)<<endl;
     cout<<"The maximum depth using queue is "<< depth_using_queue(root)<<endl;
+    cout<<"The maximum depth using small program is "<< height(root)<<endl;
+
     return 0;
 }
