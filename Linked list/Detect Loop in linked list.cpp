@@ -1,11 +1,12 @@
 /*
-Detect Loop in linked list
-Given a linked list of N nodes, check if the linked list has a loop. Linked list can contain self loop.
+Reverse a linked list 
+Given a linked list of N nodes,reverse this list.
+The last node must be the head after the operation.
 */
 
 #include<iostream>
 
-typedef struct Node Node;
+
 struct Node {
     int data;
     Node* next;
@@ -16,25 +17,23 @@ struct Node {
     }
     
 }; 
+typedef struct Node Node;
 
 int main()
 {
     return 0;
 }
 
-struct Node* reverseList(struct Node *head)
+int detectLoop(Node* list)
 {
-        struct Node *r = NULL;
-        struct Node * temp = head;
-        struct Node * s;
-        
-        while(temp)
-        {
-           s = temp->next;
-           temp->next = r;
-           r = temp;
-           temp = s;
+    Node *slow_p = list, *fast_p = list;
+ 
+    while (slow_p && fast_p && fast_p->next) {
+        slow_p = slow_p->next;
+        fast_p = fast_p->next->next;
+        if (slow_p == fast_p) {
+            return 1;
         }
-        
-        return r;
+    }
+    return 0;
 }
