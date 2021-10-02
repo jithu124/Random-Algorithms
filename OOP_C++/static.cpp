@@ -1,15 +1,14 @@
 /*Static data member
--is associated with class not with object
--is shared by all the objects of a class
--needs to be defined outside the class scope (in addition to the declaration
-within the class scope) to avoid linker error
--must be initialized in a source file
--is constructed before main() starts and destructed after main() ends
--can be private / public type
--can be accessed with 
-*the class-name followed by the scope resolution operator (::)
-*as a member of any object of the class
--virtually eliminates any need for global variables in OOPs environment*/
+    -is associated with class not with object
+    -is shared by all the objects of a class
+    -needs to be defined outside the class scope (in addition to the declaration within the class scope) to avoid linker error
+    -must be initialized in a source file
+    -is constructed before main() starts and destructed after main() ends
+    -can be private / public type
+    -can be accessed with 
+        *the class-name followed by the scope resolution operator (::)
+        *as a member of any object of the class
+    -virtually eliminates any need for global variables in OOPs environment*/
 
 /*static member function
 does not have this pointer – not associated with any object
