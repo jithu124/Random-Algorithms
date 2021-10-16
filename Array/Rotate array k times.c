@@ -18,8 +18,13 @@ int main() {
 void rotate(int *ptr,int n,int k)
 {
     k = k%n;
+    if((n==1)||(k==0))
+    {
+    	return;
+    }
     int num = n;
     int current = *ptr,index=0,temp2;
+    int prev = 0;
     while(num>0)
     {   
         index = (index+k)%n;
@@ -27,9 +32,9 @@ void rotate(int *ptr,int n,int k)
         *(ptr+index) = current;
         current = temp2;
         num--;
-        if(index==0)
-        {
-            index = 1;
+        if(index==prev)
+        {   prev++;
+            index = prev;
             current = *(ptr+index);
         }
         
