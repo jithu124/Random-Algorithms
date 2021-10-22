@@ -3,10 +3,10 @@ using namespace std;
 #define size 100
 
 
-template<class T>
+template<class T,class T2=int>
 class Stack{
     private:
-        int top;
+        T2 top;
         T arr[size];
     public:
         Stack();
@@ -18,31 +18,37 @@ class Stack{
         void print();
 };
 
-template<class T> Stack<T>::Stack(){top = -1;}
+template<class T,class T2>
+Stack<T,T2>::Stack(){top = -1;}
 
-template<class T> void Stack<T>::pop(){
+template<class T,class T2>
+void Stack<T,T2>::pop(){
     if(top > -1)
     { 
         top--;
     }
 }
 
-template<class T> void Stack<T>::push(T i){
+template<class T,class T2> 
+void Stack<T,T2>::push(T i){
     if(notfull())
     {
         arr[++top] = i;
     }
 }
 
-template<class T> bool Stack<T>::isempty(){
+template<class T,class T2> 
+bool Stack<T,T2>::isempty(){
     return top == -1;
 }
 
-template<class T> bool Stack<T>::notfull(){
+template<class T,class T2> 
+bool Stack<T,T2>::notfull(){
     return top <= size;
 }
 
-template<class T> T Stack<T>::front(){
+template<class T,class T2> 
+T Stack<T,T2>::front(){
         T res = arr[0];
         if(!isempty())
         {
@@ -50,7 +56,8 @@ template<class T> T Stack<T>::front(){
         }
         return res;
 }
-template<class T> void Stack<T>::print(){
+template<class T,class T2> 
+void Stack<T,T2>::print(){
         for(int i = top; i>=0; i--)
         {
             cout<<arr[i];
@@ -59,7 +66,7 @@ template<class T> void Stack<T>::print(){
 }
 
 int main(){
-    Stack<char> a;
+    Stack<char,int> a;
     a.push('a');
     a.push('b');
     a.push('c');

@@ -30,7 +30,7 @@ class MathObject { // Constant concept of PI
     }
 };
 int main() {
-MathObject mo;
+const MathObject mo;
 cout << mo.pi() << endl; // Access PI
 return 0;
 }
