@@ -1,3 +1,4 @@
 # Ignored files
 *.csv
 *.vscode/
+*.out
