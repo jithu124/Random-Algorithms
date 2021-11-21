@@ -1,5 +1,5 @@
 #include<iostream>
-#include<queue>
+#include<stack>
 #include<vector>
 #include<map>
 using namespace std;
@@ -65,32 +65,31 @@ class graph{
 
 };
 
-class BFS{
+class DFS{
     public:
-        queue<node> Q;
-        BFS(){}
+        stack<node> Q;
+        DFS(){}
 
         void PrintBRS(graph &t)
         {
             //graph t(s);
-            queue<node> Q;
-            t.g[0].visited = true;
+            stack<node> Q;
             Q.push(t.g[0]);
 
             while(!Q.empty())
             {
-                auto temp = Q.front();
+                auto temp = Q.top();
                 Q.pop();
-                cout<<temp.nodevalue<<" ";
-                for(auto a:t.g[temp.nodevalue].edgestovertex)
-                {
-                    auto v = a.edgevertex;
-                    if(t.g[v].visited == false)
-                    {
-                        t.g[v].visited = true;
-                        Q.push(t.g[v]);
-                    }
+                if(t.g[temp.nodevalue].visited == false)
+                {   
+                    t.g[temp.nodevalue].visited = true;
+                    cout<<temp.nodevalue<<" ";
 
+                    for(auto a:t.g[temp.nodevalue].edgestovertex)
+                    {
+                        auto v = a.edgevertex;
+                        Q.push(t.g[v]);                     
+                    }
                 }
             }
             
@@ -122,7 +121,7 @@ int main(){
     a.addedge(5,2);
     a.addedge(5,3);
     a.printit();
-    BFS b;
+    DFS b;
     b.PrintBRS(a);
     return 0;
 }
