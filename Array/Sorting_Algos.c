@@ -10,28 +10,36 @@ void Mergesort(int * ptr, int l, int r);
 void Merge(int * ptr, int l, int m, int r);
 void quicksort(int * ptr, int low, int high);
 int partition(int * ptr, int low, int high);
+void Insertion(int * ptr, int low, int high);
 void printit(int *ptr, int n);
 
 int main(){
 
     int arr[] = { 1,2,-9,6,9,1,2,3,0};
     int n = sizeof(arr)/sizeof(arr[0]);
-    printit(arr,n);
+    //printit(arr,n);
     //Bubble(arr,n);
     //Selection(arr,n);
     //Mergesort(arr,0,n-1);
-    quicksort(arr,0,n-1);
-    printit(arr,n);
-    int * ptr_temp = (int *)malloc(sizeof(arr));
-    sortptr FunctionArray[] = {&Bubble,&Selection,&Mergesort,&quicksort};
-    for(int i =0;i<4;i++)
+    //quicksort(arr,0,n-1);
+    //printit(arr,n);
+    //quicksort(arr,0,n-1);
+    //printit(arr,n);
+    int * ptr_temp = (int *)malloc(n*sizeof(int));
+    sortptr FunctionArray[] = {&Bubble,&Selection,&Mergesort,&quicksort,&Insertion};
+    int n2 = sizeof(FunctionArray)/sizeof(FunctionArray[0]);
+
+    for(int f_count = 0; f_count < n2; f_count++)
     {
-        //memcpy(ptr_temp,arr,sizeof(arr));
-        for(i=0;i<9;i++)
-        {*(ptr_temp+i)=arr[i];}
+        //memcpy(ptr_temp,arr,sizeof(arr));       
+        for(int i = 0 ;i < n; i++)
+        {
+            *(ptr_temp+i)=arr[i];
+        }
         printit(ptr_temp,n);
-        FunctionArray[i](ptr_temp,0,8);
+        FunctionArray[f_count](ptr_temp,0,8);
         printit(ptr_temp,n);
+        printf("----------------------\n");
 
     }
     return 0;
@@ -83,6 +91,7 @@ void Selection(int * ptr, int n1,int n)
         }
     }
 }
+
 
 void Mergesort(int * ptr, int l, int r)
 {
@@ -162,4 +171,19 @@ int partition(int * ptr, int low, int high)
     }
     swap(ptr+i+1,ptr+high);
     return i+1;
+}
+
+void Insertion(int * ptr, int low, int high)
+{
+    for(int i = 1; i <= high;i++)
+    {
+        int key = *(ptr+i);
+        int j = i-1;
+        while((*(ptr+j) > key)&&(j>=0))
+        {
+            *(ptr+j+1) = *(ptr+j); 
+             j--;
+        }
+        *(ptr+j+1) = key;
+    }
 }
