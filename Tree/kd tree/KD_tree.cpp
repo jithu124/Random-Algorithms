@@ -61,7 +61,7 @@ void inorder(Node * root)
 
 int main()
 {
-    int arr[][k] = {{5,10},{1,2},{8,55},{0,8}};
+    int arr[][k] = {{5,10},{1,2},{8,55},{0,8},{0,0}};
     Node * root = NULL;
     int n = sizeof(arr)/sizeof(arr[0]);
     for(int i = 0; i <n ; i++)
